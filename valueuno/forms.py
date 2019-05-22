@@ -1,46 +1,40 @@
 from django import forms
 
-CHOICES = [
-    ('cluster', 'Cluster-type'),
-    ('updowngap', 'Up & Down Gap')
+CLUSTER_TYPE = [
+    (0, 'Simple Cluster'),
+    (1, 'Detailed Cluster')
 ]
 
 DAYSTOREAD_CLUSTER = [
-    ('two', '2'),
-    ('three', '3'),
-    ('four', '4'),
-    ('five', '5'),
-]
-
-CLUSTER_TYPE = [
-    ('simple', 'Simple Cluster'),
-    ('detailed', 'Detailed Cluster')
+    (2, '2'),
+    (3, '3'),
+    (4, '4'),
+    (5, '5'),
 ]
 
 DAYSTOREAD_UPDOWNGAP = [
-    ('one', '1'),
-    ('two', '2'),
-    ('three', '3')
+    (1, '1'),
+    (2, '2'),
+    (3, '3')
 ]
 
 
 class NextDayPredictionForm(forms.Form):
-    choices_input = forms.MultipleChoiceField(
-        label='Choose the options for predicting: ',
-        widget=forms.CheckboxSelectMultiple, 
-        choices=CHOICES) 
+    choices_input = forms.BooleanField(
+        label='Cluster with Gap: ',required=False,
+        widget=forms.CheckboxInput)
 
     cluster_type_input = forms.CharField(
-        label='Choose the type of cluster for predicting: ', 
+        label='Choose the type of cluster: ',
         widget=forms.Select(choices=CLUSTER_TYPE))
-
-    updowngap_input = forms.CharField(
-        label='Choose the number of days for Up & Down Gap: ', 
-        widget=forms.Select(choices=DAYSTOREAD_UPDOWNGAP))
 
     clusterdays_input = forms.CharField(
         label='Choose the number of days for Cluster Reading: ', 
         widget=forms.Select(choices=DAYSTOREAD_CLUSTER))
+
+    updowngap_input = forms.CharField(
+        label='Choose the number of days for Up & Down Gap: ',
+        widget=forms.Select(choices=DAYSTOREAD_UPDOWNGAP))
 
     def clean(self):
         cleaned_data = super(NextDayPredictionForm, self).clean()

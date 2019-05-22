@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'users.apps.UsersConfig',
     'valueuno.apps.ValueunoConfig',
+    'valueuno_admin.apps.ValueunoAdminConfig',
     'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',

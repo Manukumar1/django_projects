@@ -1,4 +1,10 @@
 {% extends "valueuno/base.html" %}
 {% block content %}
     <h1>ValueUno About!</h1>
+        {% for date in dates_simple_cluster %}
+            <p>Dates: {{ date }}</p><hr>
+        {% endfor %}
+        {% for ans in answer %}
+            <p>Answer: {{ ans }}</p><hr>
+        {% endfor %}
 {% endblock content %}
