@@ -1,10 +1,11 @@
 {% extends "valueuno/base.html" %}
 {% block content %}
     <h1>ValueUno About!</h1>
-        {% for date in dates_simple_cluster %}
-            <p>Dates: {{ date }}</p><hr>
-        {% endfor %}
-        {% for ans in answer %}
-            <p>Answer: {{ ans }}</p><hr>
-        {% endfor %}
+        {% if context.items %}
+            {% for date,ans in context.items %}
+                    <p>{{ date }} : {{ ans }}</p><hr>
+            {% endfor %}
+        {% else %}
+            <p>There is no data for these days.</p>
+        {% endif %}
 {% endblock content %}

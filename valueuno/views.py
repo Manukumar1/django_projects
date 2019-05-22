@@ -16,7 +16,7 @@ def predict(request):
             clusterdays_input = form.cleaned_data.get('clusterdays_input')
             context1 = NextDay.calculateNextDay(daysToRead=clusterdays_input)
 
-            return render(request, 'valueuno/about.html', context1)
+            return render(request, 'valueuno/about.html', {'context':context1})
     else:
         form = NextDayPredictionForm()
     return render(request, 'valueuno/nextDayPredictorForm.html', {'form': form})

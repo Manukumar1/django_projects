@@ -44,34 +44,46 @@ class NextDay:
 
         dates_column = sheet.col_values(1)
 
-        simple_cluster = second_column[-(2):]
-        # print('a', simple_cluster)
-        #
-        # print(second_column)
-        cluster = third_column[-(2):]
-        # print(cluster)
-        # print(type(daysToReadInt))
-        cl = NextDay()
+        simple_cluster = second_column[-(daysToReadInt):]
+
+        cluster = third_column[-(daysToReadInt):]
+
         if daysToReadInt == 2:
             context = {}
             for i in range(len(second_column) - (1 + daysToReadInt)):
                 if ((second_column[i] == simple_cluster[0]) and (second_column[i + 1] == simple_cluster[1])):
                     dates_simple_cluster.append(dates_column[i + 2])
                     answer.append(second_column[i + 2])
-            # print(dates_simple_cluster)
-            # print(answer)
-            context = {
-                'dates_simple_cluster':dates_simple_cluster,
-                'answer': answer,
-            }
-            # print(context)
+            context = dict(zip(dates_simple_cluster,answer))
             return context
-        # elif daysToRead == 3:
-        #     return cl.ThreedaysToRead(daysToRead)
-        # elif daysToRead == 4:
-        #     return cl.FourdaysToRead(daysToRead)
-        # else:
-        #     return cl.FivedaysToRead(daysToRead)
+        elif daysToReadInt == 3:
+            context = {}
+            for i in range(len(second_column) - (1 + daysToReadInt)):
+                if ((second_column[i] == simple_cluster[0]) and (second_column[i + 1] == simple_cluster[1]) and (
+                        second_column[i + 2] == simple_cluster[2])):
+                    dates_simple_cluster.append(dates_column[i + 3])
+                    answer.append(second_column[i + 3])
+            context = dict(zip(dates_simple_cluster, answer))
+            return context
+        elif daysToReadInt == 4:
+            context = {}
+            for i in range(len(second_column) - (1 + daysToReadInt)):
+                if ((second_column[i] == simple_cluster[0]) and (second_column[i + 1] == simple_cluster[1]) and (
+                        second_column[i + 2] == simple_cluster[2]) and (second_column[i + 3] == simple_cluster[3])):
+                    dates_simple_cluster.append(dates_column[i + 4])
+                    answer.append(second_column[i + 4])
+            context = dict(zip(dates_simple_cluster, answer))
+            return context
+        else:
+            context = {}
+            for i in range(len(second_column) - (1 + daysToReadInt)):
+                if ((second_column[i] == simple_cluster[0]) and (second_column[i + 1] == simple_cluster[1]) and (
+                        second_column[i + 2] == simple_cluster[2]) and (second_column[i + 3] == simple_cluster[3]) and (
+                        second_column[i + 4] == simple_cluster[4])):
+                    dates_simple_cluster.append(dates_column[i + 5])
+                    answer.append(second_column[i + 5])
+            context = dict(zip(dates_simple_cluster, answer))
+            return context
 
 # if __name__ == "__main__":
 # #     calculateNextDay()
