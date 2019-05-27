@@ -13,4 +13,14 @@
                 </div>
             </form>
         </div>
+        <div class="content-section">
+        <h1>Our Predictions!</h1>
+            {% if context.items %}
+                {% for date,ans in context.items %}
+                        <hr><p>{{ date }} : {{ ans }}</p>
+                {% endfor %}
+            {% else %}
+                <p>There is no data.</p>
+            {% endif %}
+        </div>
 {% endblock content %}

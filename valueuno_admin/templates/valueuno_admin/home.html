@@ -1,4 +1,12 @@
 {% extends "valueuno_admin/base.html" %}
 {% block admin-content %}
     <h1>Welcome to ValueUno Admin</h1>
+    {% if data.items %}
+        {% for i,j in data.items %}
+            <p>Date:-{{ i }}</p><p>Simple Cluster:- {{ j }}</p>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>There is no data!!</p>
+    {% endif %}
 {% endblock admin-content %}
